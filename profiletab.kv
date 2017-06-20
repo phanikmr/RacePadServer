@@ -1,0 +1,39 @@
+#:import ListAdapter kivy.adapters.listadapter.ListAdapter
+#:import ListItemButton kivy.uix.listview.ListItemButton
+<ProfileTabWidget>:
+    orientation:"horizontal"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            size_hint_y: 0.05
+            BoxLayout:
+                size_hint_x:0.2
+                Button:
+                    border: 0, 0, 0, 0
+                    background_normal:"data/plus-button.png"
+                    on_press:root.add_profile()
+                Button:
+                    border: 0, 0, 0, 0
+                    background_normal:"data/edit-blue.png"
+                    on_press:root.edit_profile()
+                Button:
+                    border: 0, 0, 0, 0
+                    background_normal:"data/delete.png"
+                    on_press:root.delete_profile()
+            BoxLayout:
+                size_hint_x:0.8
+                Label:
+                    text:root.action_text
+        BoxLayout:
+            size_hint_y:0.95
+            ListView:
+                adapter: ListAdapter(data=root.profiles_list,allow_empty_selection= False,selection_mode="single",cls=ListItemButton)
+
+
+
+
+
+<ListItemButton>:
+    on_press:app.root.profile_select_method(*args)
+    selected_color: [0.04,0.7,0.9,1]
+    deselected_color: [0,0,0,1]

@@ -1,0 +1,33 @@
+==================
+RacePadServer v2.1 
+==================
+**WiFi Mode**:
+--------------
+- Starting RacePadServer for first time will take 2 to 3 minutes to set things ready for you
+- If you want create Race Pad hotspot you sholud login as Administartor
+- For first time creation of Race Pad hotspot you will need anyone of active internet connections in your PC
+- Most probably **ip** would be **192.168.137.1** if you create Race Pad HotSpot
+- You can share your PC internet with your Android by using Race Pad HotSpot
+- Click on the *Repair* Button in *Connection > WIFI* tab if you are facing problems with Race Pad HotSpot
+- Share the active internet connection in *Connection > WIFI* tab to work Race Pad hotspot properly
+
+**BlueTooth Mode**:
+-------------------
+- Pair your Android BlueTooth device with PC BlueTooth
+- For details about connection click on *BlueTooth* in *Connection* tab
+- Check for Service status Ready before establishing connection
+
+**Profiles**:
+-------------
+- Adding game profiles is straight forward just check out profiles tab
+- you can add, edit and delete profiles even when you connented profiles will update in Race Pad clien automatically
+- check button mappings just by clicking on profiles list on *Profiles* tab
+
+**Troubleshoot**:
+-----------------
+- No vast Testing happened on this RacePadServer v2.1 so this app is provided with Console for checking bugs
+- Please inform us any comments or bugs at http://bitsblender.wix.com/racepad
+- Just Restarting RacePadServer and Race Pad will sort out many problems
+- If you are facing problems with Race Pad HotSpot try to repair with **RePair** button and select active Internet Connection to Share
+
+For More Help: http://bitsblender.wix.com/racepad#!help/c153r

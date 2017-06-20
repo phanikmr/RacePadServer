@@ -1,0 +1,343 @@
+#:import startfile os.startfile
+#:import start_new_thread thread.start_new_thread
+<RacePadServerWidget>:
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 0.95
+        TabbedPanel:
+            do_default_tab: False
+
+            TabbedPanelItem:
+                text: 'Connection'
+                BoxLayout:
+                    orientation:"horizontal"
+                    BoxLayout:
+                        orientation:"vertical"
+                        BoxLayout:
+                            orientation:"horizontal"
+                            size_hint_y:None
+                            height:"50dp"
+                            Label:
+                                text:"Simulate continous Key Hold"
+                            Switch:
+                                id:press_mode
+                                active:True
+                        Accordion:
+                            orientation:"horizontal"
+                            AccordionItem:
+                                title:"BlueTooth"
+                                GridLayout:
+                                    orientation:"vertical"
+                                    cols:None
+                                    rows:4
+                                    Label:
+                                        id:adapter_status
+                                        text:"Adapter Status: "
+                                        text_size:self.width,None
+                                        size_hint_y:None
+                                        height:"50dp"
+                                    Label:
+                                        id:service_status
+                                        text:"Service Status: Intialising..."
+                                        text_size:self.width,None
+                                        size_hint_y:None
+                                        height:"50dp"
+                                    Label:
+                                        id:device_name
+                                        text:"Client Name: Unknown"
+                                        text_size:self.width,None
+                                        size_hint_y:None
+                                        height:"50dp"
+                                        disabled:True
+                                    Label:
+                                        id:device_address
+                                        text:"Client Address:None"
+                                        size_hint_y:None
+                                        text_size:self.width,None
+                                        height:"50dp"
+                                        disabled:True
+                            AccordionItem:
+                                title:"WiFi"
+                                GridLayout:
+                                    orientation:"vertical"
+                                    cols:None
+                                    rows:8
+                                    Label:
+                                        id:wifi_adapter_status
+                                        text:"Device Status : No Wireless Device detected"
+                                        size_hint_y:None
+                                        text_size:self.width,None
+                                        height:"50dp"
+                                    Label:
+                                        id:listening_ip_addresses
+                                        text:"Listening IP Addresses : None"
+                                        disabled:True
+                                        size_hint_y:None
+                                        text_size:self.width,None
+                                        height:"50dp"
+                                    BoxLayout:
+                                        size_hint_y:None
+                                        height:"50dp"
+                                        orientation:"horizontal"
+                                        Label:
+                                            id:port_label
+                                            text:"Port"
+                                            text_size:self.width,None
+                                            disabled:True
+                                        TextInput:
+                                            id:port_text_input
+                                            text:"55555"
+                                            padding:"15dp"
+                                            multiline:False
+                                            disabled:True
+                                        Button:
+                                            id:refresh_port
+                                            text:"Refresh"
+                                            disabled:True
+                                            on_press:root.refresh_port_callback(*args)
+                                    BoxLayout:
+                                        orientation:"horizontal"
+                                        size_hint_y:None
+                                        height:"50dp"
+                                        Label:
+                                            id:hotspot_label
+                                            text:"Create Race Pad HotSpot \n(Run as administrator to Enable this feature)"
+                                            size_hint_y:None
+                                            text_size:self.width,None
+                                            height:"50dp"
+                                            disabled:True
+                                        Switch:
+                                            id:hotspot_switch
+                                            disabled:True
+                                            active:False
+                                            on_active:root.hotspot_switch_thread(*args)
+                                    ProgressBar:
+                                        id:progress_bar
+                                        size_hint_y:None
+                                        height:"20dp"
+                                        max:100
+                                        value:0
+                                    BoxLayout:
+                                        orientation:"horizontal"
+                                        size_hint_y:None
+                                        height:"50dp"
+                                        Label:
+                                            id:hotspot_share_label
+                                            text_size:self.width,None
+                                            text:"Active internet connection to share with Race Pad HotSpot:"
+                                            disabled:True
+                                        Spinner:
+                                            id:connections_spinner
+                                            text:"select the connection to share"
+                                            disabled:True
+                                            on_text:root.connections_spinner_callback(*args)
+                                    Label:
+                                        id:hotspot_inf_label
+                                        font_size:"12sp"
+                                        text:"Please switch ON Race Pad HotSpot if you are not in same network \nE.g.: \n1) Android & PC not connected to same WiFi Router.\n2) PC connected to LAN and Android is not connected to internet and  etc."
+                                    BoxLayout:
+                                        size_hint_y:None
+                                        height:"25dp"
+                                        orientation:"horizontal"
+                                        BoxLayout:
+                                            size_hint_x:0.97
+                                        Button:
+                                            disabled:True
+                                            id:hotspot_repair
+                                            size_hint_x:0.03
+                                            on_press:root.repair_callback(*args)
+                                            Image:
+                                                allow_stretch: True
+                                                size:hotspot_repair.size
+                                                source: 'data/repair-icon.png'
+                                                pos: hotspot_repair.pos
+
+            TabbedPanelItem:
+                text: "Profiles"
+                BoxLayout:
+                    orientation: "horizontal"
+                    ProfileTabWidget
+                    BoxLayout:
+                        orientation: "vertical"
+                        BoxLayout:
+                            size_hint_y:0.04
+                            Label:
+                                id:game_name
+                                text:"Game Name"
+                                font_size:"12sp"
+                        BoxLayout:
+                            size_hint_y:0.06
+                            TextInput:
+                                id:game_path
+                                text: "Game Path"
+                                multiline: False
+                                font_size:"12sp"
+	                    BoxLayout:
+	                        size_hint_y:0.9
+	                        orientation:"vertical"
+	                        BoxLayout:
+                                AnchorLayout:
+                                    anchor_x: "left"
+                                    anchor_y: "top"
+                                    BoxLayout:
+                                        orientation:"vertical"
+                                        ButtonsTop:
+                                            id:btn_1
+                                            text:"btn_1"
+                                        ButtonsTop:
+                                            id:btn_2
+                                            text:"btn_2"
+                                AnchorLayout:
+                                    anchor_x: "center"
+                                    anchor_y: "top"
+                                    Button:
+                                        id:btn_x
+                                        text:"btn_x"
+                                        border: 0, 0, 0, 0
+                                        background_normal: "data/xbox-button.png"
+                                        background_down: "data/xbox-button-clicked.png"
+                                AnchorLayout:
+                                    anchor_x: "right"
+                                    anchor_y: "top"
+                                    BoxLayout:
+                                        orientation:"vertical"
+                                        ButtonsTop:
+                                            id:btn_3
+                                            text:"btn_3"
+                                        ButtonsTop:
+                                            id:btn_4
+                                            text:"btn_4"
+                            BoxLayout:
+                                BoxLayout:
+                                    size_hint_x:0.17
+                                    Button:
+                                        id:btn_l
+                                        text:'btn_l'
+                                        border: 0, 0, 0, 0
+                                        background_normal: "data/arrow-left.png"
+                                        background_down: "data/arrow-left-clicked.png"
+                                BoxLayout:
+                                    size_hint_x:0.17
+                                    Button:
+                                        id:btn_r
+                                        text:'btn_r'
+                                        border: 0, 0, 0, 0
+                                        background_normal: "data/arrow-right.png"
+                                        background_down: "data/arrow-right-clicked.png"
+
+                                BoxLayout:
+                                    size_hint_x:0.32
+                                    Button:
+                                        border: 0, 0, 0, 0
+                                        background_disabled_normal:"data/test.png"
+                                        disabled:True
+
+                                BoxLayout:
+                                    size_hint_x:0.17
+                                    Button:
+                                        id:btn_u
+                                        text:'btn_u'
+                                        border: 0, 0, 0, 0
+                                        background_normal: "data/arrow-up.png"
+                                        background_down: "data/arrow-up-clicked.png"
+                                BoxLayout:
+                                    size_hint_x:0.17
+                                    Button:
+                                        id:btn_d
+                                        text:'btn_d'
+                                        border: 0, 0, 0, 0
+                                        background_normal: "data/arrow-down.png"
+                                        background_down: "data/arrow-down-clicked.png"
+
+
+                            BoxLayout:
+                                AnchorLayout:
+                                    anchor_x: "left"
+                                    anchor_y: "bottom"
+                                    BoxLayout:
+                                        orientation:"vertical"
+                                        ButtonsTop:
+                                            id:btn_5
+                                            text:"btn_5"
+                                        ButtonsTop:
+                                            id:btn_6
+                                            text:"btn_6"
+                                AnchorLayout:
+                                    anchor_x: "right"
+                                    anchor_y: "bottom"
+                                    BoxLayout:
+                                        orientation:"vertical"
+                                        ButtonsTop:
+                                            id:btn_7
+                                            text:"btn_7"
+                                        ButtonsTop:
+                                            id:btn_8
+                                            text:"btn_8"
+            TabbedPanelItem:
+                text: "Help"
+                RstDocument:
+                    text:open("data/help.txt",'r').read()
+            TabbedPanelItem:
+                text: "About"
+                BoxLayout:
+                    orientation:"vertical"
+
+                    BoxLayout:
+                        size_hint_y:0.1
+
+                    BoxLayout:
+                        size_hint_y:0.4
+                        orientation:"horizontal"
+                        BoxLayout:
+                        Image:
+                            size_hint:[None,None]
+                            size:[350,100]
+                            source:"data/bitsblender_logo.png"
+                        BoxLayout:
+                        Image:
+                            size_hint:[None,None]
+                            size:[100,100]
+                            source:"data/rac_pad.png"
+                        BoxLayout:
+                    BoxLayout:
+                        size_hint_y:0.4
+                        orientation:"vertical"
+                        BoxLayout
+                        Label:
+                            text:"RacePadServer v2.1"
+                            font_size:"30sp"
+                        BoxLayout:
+                        Label:
+                            text:"copyright(c) 2016 BitsBlender[size=5]TM[/size]. All rights reserved"
+                            markup:True
+                            font_size:"10sp"
+                        Label:
+                            text:"Powered by Kivy Python 1.9.1"
+                            font_size:"10sp"
+                        Label:
+                            text:"For More: [ref=link]bitsblender.wix.com/racepad[/ref]"
+                            markup:True
+                            font_size:"12sp"
+                            on_ref_press:startfile("http://bitsblender.wix.com/racepad")
+
+                        BoxLayout
+                        BoxLayout
+
+                    BoxLayout:
+                        size_hint_y:0.1
+
+    BoxLayout:
+        size_hint_y: 0.05
+        Label:
+            id:connection_status
+            text:"No Connection"
+            text_size: self.width,None
+
+
+<SpaceLayout@BoxLayout>:
+
+
+<ButtonsTop@Button>:
+    border: 0, 0, 0, 0
+	background_normal: "data/rect-butt.png"
+	background_down: "data/rect-butt-clicked.png"

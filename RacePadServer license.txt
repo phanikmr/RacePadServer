@@ -1,0 +1,26 @@
+RacePadServer v2.1
+RacePadServer is a free app for Windows operating system
+RacePadServer is developed using open source software Python Kivy
+which is under MIT license 
+
+------------------------
+copyright & Distribution
+------------------------
+
+you can copy and distribute this software without any modification
+to the binaries of the app
+
+you are not allowed to charge for the distribution of this software
+in any form
+
+--------
+Warranty
+--------
+No Warranty provided to this software but you can visit
+the company website for any assistance
+
+The authour is not responsible for damages of any kind
+
+copyright(c) 2016 BitsBlender TM. All Rights Reserved. 
+For More : http://bitsblender.wix.com/racepad
+Contact us: bitsblender@gmail.com

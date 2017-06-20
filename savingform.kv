@@ -1,0 +1,157 @@
+<SavingFormWidget>:
+    BoxLayout:
+        size_hint_x: 0.3
+        orientation:"vertical"
+        Button:
+            id:save_btn
+            text: "Save"
+            size_hint_y: None
+            size_y: "30dp"
+        Button:
+            id:cancel_btn
+            text: "Cancel"
+            size_hint_y: None
+            size_y: "30dp"
+        Label:
+            text:root.message_text
+            text_size:self.size
+        BoxLayout
+    BoxLayout:
+        size_hint_x: 0.7
+        orientation: "vertical"
+        BoxLayout:
+            size_hint_y:0.05
+            TextInput:
+                id:game_name
+                hint_text: "Game Name"
+                multiline: False
+                text: ""
+                font_size:"12sp"
+        BoxLayout:
+            size_hint_y:0.05
+            TextInput:
+                id:game_path
+                size_hint_x:0.8
+                text: root.game_path_text
+                hint_text: "Game Path"
+                multiline: False
+                font_size:"12sp"
+            Button:
+                size_hint_x:0.2
+                text: "Browse"
+                on_press:root.file_browser()
+        BoxLayout:
+            size_hint_y:0.9
+            orientation:"vertical"
+            BoxLayout:
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "top"
+                    BoxLayout:
+                        orientation:"vertical"
+                        ButtonsTop:
+                            id:btn_1
+                            text:"btn_1"
+                            on_press:root.scan_key_board(*args)
+                        ButtonsTop:
+                            id:btn_2
+                            text:"btn_2"
+                            on_press:root.scan_key_board(*args)
+                AnchorLayout:
+                    anchor_x: "center"
+                    anchor_y: "top"
+                    Button:
+                        id:btn_x
+                        text:"btn_x"
+                        on_press:root.scan_key_board(*args)
+                        border: 0, 0, 0, 0
+                        background_normal: "data/xbox-button.png"
+                        background_down: "data/xbox-button-clicked.png"
+                AnchorLayout:
+                    anchor_x: "right"
+                    anchor_y: "top"
+                    BoxLayout:
+                        orientation:"vertical"
+                        ButtonsTop:
+                            id:btn_3
+                            text:"btn_3"
+                            on_press:root.scan_key_board(*args)
+                        ButtonsTop:
+                            id:btn_4
+                            text:"btn_4"
+                            on_press:root.scan_key_board(*args)
+            BoxLayout:
+
+
+
+                BoxLayout:
+                    size_hint_x:0.17
+                    Button:
+                        id:btn_l
+                        text:'btn_l'
+                        on_press:root.scan_key_board(*args)
+                        border: 0, 0, 0, 0
+                        background_normal: "data/arrow-left.png"
+                        background_down: "data/arrow-left-clicked.png"
+                BoxLayout:
+                    size_hint_x:0.17
+                    Button:
+                        id:btn_r
+                        text:'btn_r'
+                        on_press:root.scan_key_board(*args)
+                        border: 0, 0, 0, 0
+                        background_normal: "data/arrow-right.png"
+                        background_down: "data/arrow-right-clicked.png"
+                BoxLayout:
+                    size_hint_x:0.32
+                    Button:
+                        border: 0, 0, 0, 0
+                        background_disabled_normal:"data/test.png"
+                        disabled:True
+                BoxLayout:
+                    size_hint_x:0.17
+                    Button:
+                        id:btn_u
+                        text:'btn_u'
+                        border: 0, 0, 0, 0
+                        on_press:root.scan_key_board(*args)
+                        background_normal: "data/arrow-up.png"
+                        background_down: "data/arrow-up-clicked.png"
+                BoxLayout:
+                    size_hint_x:0.17
+                    Button:
+                        id:btn_d
+                        text:'btn_d'
+                        border: 0, 0, 0, 0
+                        on_press:root.scan_key_board(*args)
+                        background_normal: "data/arrow-down.png"
+                        background_down: "data/arrow-down-clicked.png"
+
+
+            BoxLayout:
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "bottom"
+                    BoxLayout:
+                        orientation:"vertical"
+                        ButtonsTop:
+                            id:btn_5
+                            text:"btn_5"
+                            on_press:root.scan_key_board(*args)
+                        ButtonsTop:
+                            id:btn_6
+                            text:"btn_6"
+                            on_press:root.scan_key_board(*args)
+                AnchorLayout:
+                    anchor_x: "right"
+                    anchor_y: "bottom"
+                    BoxLayout:
+                        orientation:"vertical"
+                        ButtonsTop:
+                            id:btn_7
+                            text:"btn_7"
+                            on_press:root.scan_key_board(*args)
+                        ButtonsTop:
+                            id:btn_8
+                            text:"btn_8"
+                            on_press:root.scan_key_board(*args)
