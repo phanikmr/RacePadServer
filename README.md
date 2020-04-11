@@ -2,6 +2,8 @@
 ![Alt text](https://static.wixstatic.com/media/0efaf2_94a76b718ee24ca38b1fbf452b5427e9.png/v1/fill/w_243,h_67,al_c,usm_0.66_1.00_0.01/0efaf2_94a76b718ee24ca38b1fbf452b5427e9.png "BitsBlender")
 # RacePadServer
 
+https://bitsblender.wixsite.com/racepad/downloads
+
 Playing games on your computer is an excellent way to entertain yourself in your free time, but sometimes not having certain hardware components, such as controllers, can be frustrating.
 
 However, nowadays there is a wide variety of software solutions that can help you achieve similar results through emulation. One of the utilities mentioned above is RacePadServer.
